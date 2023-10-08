@@ -1,0 +1,21 @@
+#+title: FABulous SoC UART Debug Infrastructure
+
+This repository is a collection of projects created/used in the development of the UART-Debug infrastructure for the FABulous SoC Debug Infrastructure.
+* UART-Debug
+Projects relevant for the UART-Debug infrastructure are primarily the [[https://github.com/sapross/risc_dbg_uart][UART-Debug Interface]] and the  [[https://github.com/sapross/JTAG_to_UART][JTAG to UART Translation Layer]] projects. For synthesis use the [[https://github.com/sapross/pythondata-cpu-cva6][pythondata-cpu-cva6]] repo in conjunction with the [[https://github.com/sapross/litex][litex]] fork.
+** Simulation
+For simulation purposes create a separate Vivado Project and make use of the testbenches. Simulation with Verilator of the entire CVA6 core with uart-debug interface did work an one point. However, a very specific version of Verilator is required.
+** Synthesis
+For synthesis make use of litex and the pythondata-cpu-cva6 variant. Follow the installation instructions of the litex build system, install the pythondata-cpu-cv6 fork using
+#+begin_src shell
+python setup.py install
+#+end_src
+then run the synthesis for the Nexys4DDR board using
+#+begin_src shell
+ python -m litex_boards.targets.digilent_nexys4ddr --build --cpu-type cva6_uartdbg --cpu-variant standard32 --sys-clk-freq 50e6 --bus-data-width 64
+ #+end_src
+ The bitstream may be loaded onto the board with the same command replacing ~--build~ with ~--load~~.
+**** Notes
+Since the debug-interface operates with a hardware defined baud- and clock rate, remember to change the generic values found in [[litex/litex/soc/cores/cpu/cva6_uartdbg/cva6_wrapper/cva6_wrapper.sv][cva6_wrapper_pkg.sv].
+* Streaming-Trace-Buffer
+The [[https://github.com/sapross/Streaming-Trace-Buffer][STB]] is a module designed to facilitate both trace-capture and data exchange between a PL and a host system with both participants in operating in different clock domains. For simulation see the test-benches.
