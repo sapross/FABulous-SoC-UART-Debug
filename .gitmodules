@@ -16,3 +16,6 @@
 [submodule "sc-dpi"]
 	path = sc-dpi
 	url = git@github.com:sapross/sc-dpi.git
+[submodule "litex"]
+	path = litex
+	url = git@github.com:sapross/litex.git
