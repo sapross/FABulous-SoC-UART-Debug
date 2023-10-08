@@ -1,0 +1,18 @@
+[submodule "risc_dbg_uart"]
+	path = risc_dbg_uart
+	url = git@github.com:sapross/risc_dbg_uart.git
+[submodule "JTAG_to_UART"]
+	path = JTAG_to_UART
+	url = https://github.com/sapross/JTAG_to_UART.git
+[submodule "Streaming-Trace-Buffer"]
+	path = Streaming-Trace-Buffer
+	url = https://github.com/sapross/Streaming-Trace-Buffer.git
+[submodule "pythondata-cpu-cva6"]
+	path = pythondata-cpu-cva6
+	url = https://github.com/sapross/pythondata-cpu-cva6.git
+[submodule "cva6"]
+	path = cva6
+	url = https://github.com/sapross/cva6.git
+[submodule "sc-dpi"]
+	path = sc-dpi
+	url = git@github.com:sapross/sc-dpi.git
